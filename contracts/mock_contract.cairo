@@ -8,10 +8,17 @@ from starkware.cairo.common.cairo_builtins import HashBuiltin
 func balance() -> (res : felt):
 end
 
+@constructor
+func constructor{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}():
+    # %{ print("Deploying...") %}
+    return ()
+end
+
 # Increases the balance by the given amount.
 @external
 func increase_balance{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
-        amount : felt):
+    amount : felt
+):
     let (res) = balance.read()
     balance.write(res + amount)
     return ()
@@ -20,7 +27,8 @@ end
 # Returns the current balance.
 @view
 func get_balance{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (
-        res : felt):
+    res : felt
+):
     let (res) = balance.read()
     return (res)
 end

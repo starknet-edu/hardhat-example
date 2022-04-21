@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: "14.x"
       - run: pip install cairo-lang
-      - run: pip install starknet-devnet
-      - run: pip install werkzeug==2.0.3
+      - run: pip install starknet-devnet==0.1.22
       - run: npm install
       - run: npm run test
